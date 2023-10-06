@@ -2,6 +2,8 @@
 La Base de Datos se llamaba Payments.
 
 Procedimientos almacenados creados.
+
+
 CREATE PROCEDURE ObtenerPagos
 AS
 BEGIN
