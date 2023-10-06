@@ -1,0 +1,42 @@
+﻿@model List<Payment>
+
+<h1>Pagos</h1>
+<p> 
+    <a class="btn btn-primary mt-2" asp-action="Create">Crear nuevo pago</a>
+</p>
+<hr />
+
+@if(Model.Count == 0)
+{
+    <p>No hay pagos registrados</p>
+} else
+{
+    <form asp-action="BulkDelete">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var payment in Model)
+                {
+                    <tr>
+                        <td><input type="checkbox" name="selectedItems" value="@payment.Id" /></td>
+                        <td>@payment.Description</td>
+                        <td>
+                            <a class="btn btn-warning" asp-action="Edit" asp-route-id="@payment.Id">Editar</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@payment.Id">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="form-group">
+            <input type="submit" value="Eliminar seleccionados" class="btn btn-danger" />
+        </div>
+    </form>
+}
